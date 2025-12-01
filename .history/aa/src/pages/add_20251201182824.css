@@ -1,0 +1,223 @@
+/* ⭐ PAGE PRINCIPALE */
+.page {
+  padding: 40px 20px;
+  padding-top: 100px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page h1 {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ⭐ LAYOUT: IMAGE + FORM SIDE BY SIDE */
+.form-layout {
+  display: flex;
+  gap: 40px;
+  max-width: 1400px;
+  width: 100%;
+  align-items: flex-start;
+}
+
+/* ⭐ IMAGE BOX (LEFT) */
+.image-box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 30px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.image-box img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ⭐ WIZARD FORM (RIGHT) */
+.wizard {
+  flex: 1;
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* ⭐ STEP BOX */
+.step-box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.step-box h2 {
+  color: #667eea;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 3px solid #667eea;
+}
+
+/* ⭐ LABELS & INPUTS */
+.step-box label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+.step-box input,
+.step-box select,
+.step-box textarea {
+  padding: 12px 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
+.step-box input:focus,
+.step-box select:focus,
+.step-box textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.step-box input:disabled,
+.step-box select:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.step-box textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* ⭐ BUTTONS */
+.step-box button {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.step-box button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.step-box button:active {
+  transform: translateY(0);
+}
+
+/* ⭐ BUTTONS CONTAINER */
+.btns {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.btns button {
+  flex: 1;
+}
+
+.btns button:first-child {
+  background: #6c757d;
+}
+
+.btns button:first-child:hover {
+  background: #5a6268;
+  box-shadow: 0 5px 15px rgba(108, 117, 125, 0.4);
+}
+
+/* ⭐ RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+  .form-layout {
+    flex-direction: column;
+  }
+
+  .image-box {
+    order: 1;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .wizard {
+    order: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 20px;
+    padding-top: 80px;
+  }
+
+  .page h1 {
+    font-size: 2rem;
+  }
+
+  .wizard {
+    padding: 25px;
+  }
+
+  .step-box h2 {
+    font-size: 1.5rem;
+  }
+
+  .btns {
+    flex-direction: column;
+  }
+
+  .btns button {
+    width: 100%;
+  }
+}
+
+/* ⭐ ANIMATIONS */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.step-box {
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* ⭐ SELECT ARROW STYLING */
+.step-box select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23667eea' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  padding-right: 40px;
+}
