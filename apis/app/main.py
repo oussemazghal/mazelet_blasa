@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from .database import engine, Base
-from .routers import users, auth, matches, feedback, recommendations
+from .routers import users, auth, matches, feedback, recommendations, teams
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 import os
@@ -37,6 +37,7 @@ app.include_router(auth.router)
 app.include_router(matches.router)
 app.include_router(feedback.router)
 app.include_router(recommendations.router)
+app.include_router(teams.router)
 
 @app.get("/")
 def root():

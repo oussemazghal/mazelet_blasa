@@ -79,7 +79,8 @@ class MatchRecommender:
         if not user_matches or len(user_matches) == 0:
             today = date.today().isoformat()
             upcoming = db.query(models.Match).filter(
-                models.Match.date >= today
+                models.Match.date >= today,
+                models.Match.is_team_match == False  # ⭐ Only individual/mix matches
             ).limit(limit).all()
             
             result = []
@@ -93,10 +94,11 @@ class MatchRecommender:
                 })
             return result
         
-        # Get all upcoming matches (exclude past and matches user already joined)
+        # Get all upcoming matches (exclude past, team matches, and matches user already joined)
         today = date.today().isoformat()
         all_upcoming = db.query(models.Match).filter(
-            models.Match.date >= today
+            models.Match.date >= today,
+            models.Match.is_team_match == False  # ⭐ Only individual/mix matches
         ).all()
         
         # Filter out matches user already joined

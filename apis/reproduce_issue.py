@@ -1,50 +1,24 @@
-import requests
+from app.database import SessionLocal
+from app import models
 
-BASE_URL = "http://127.0.0.1:8001"
-
-def check_matches():
-    print("Checking matches...")
+def test_query():
+    db = SessionLocal()
     try:
-        response = requests.get(f"{BASE_URL}/matches/?upcoming_only=true")
-        print(f"Status: {response.status_code}")
-        print(f"Response: {response.json()}")
+        print("Querying matches...")
+        matches = db.query(models.Match).all()
+        print(f"Found {len(matches)} matches.")
+        for m in matches:
+            print(f"Match: {m.title}, Team Match: {m.is_team_match}")
+            # Access relationships to trigger lazy load
+            if m.is_team_match:
+                print(f"  Team A: {m.team_a.name if m.team_a else 'None'}")
+                print(f"  Team B: {m.team_b.name if m.team_b else 'None'}")
     except Exception as e:
-        print(f"Error checking matches: {e}")
-
-def check_signup():
-    print("\nChecking signup...")
-    # Test case 1: All fields valid
-    data = {
-        "email": "test_user_1@example.com",
-        "password": "password123",
-        "full_name": "Test User 1",
-        "phone": "12345678",
-        "age": 25
-    }
-    try:
-        response = requests.post(f"{BASE_URL}/users/", data=data)
-        print(f"Signup (valid): {response.status_code}")
-        if response.status_code != 200:
-            print(f"Response: {response.text}")
-    except Exception as e:
-        print(f"Error checking signup (valid): {e}")
-
-    # Test case 2: Empty age (simulating empty string from form)
-    data_empty_age = {
-        "email": "test_user_2@example.com",
-        "password": "password123",
-        "full_name": "Test User 2",
-        "phone": "12345678",
-        "age": "" 
-    }
-    try:
-        response = requests.post(f"{BASE_URL}/users/", data=data_empty_age)
-        print(f"Signup (empty age): {response.status_code}")
-        if response.status_code != 200:
-            print(f"Response: {response.text}")
-    except Exception as e:
-        print(f"Error checking signup (empty age): {e}")
+        print(f"Error: {e}")
+        import traceback
+        traceback.print_exc()
+    finally:
+        db.close()
 
 if __name__ == "__main__":
-    check_matches()
-    check_signup()
+    test_query()

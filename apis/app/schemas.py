@@ -24,6 +24,31 @@ class Token(BaseModel):
 class TokenData(BaseModel):
     email: Optional[str] = None
 
+class TeamMemberCreate(BaseModel):
+    email: Optional[str] = None
+    name: str # Required for non-app users, or as fallback
+
+class TeamMemberResponse(BaseModel):
+    id: int
+    user_id: Optional[int] = None
+    name: str
+    
+    class Config:
+        orm_mode = True
+
+class TeamCreate(BaseModel):
+    name: str
+    members: List[TeamMemberCreate] = []
+
+class TeamResponse(BaseModel):
+    id: int
+    name: str
+    captain_id: int
+    members: List[TeamMemberResponse] = []
+
+    class Config:
+        orm_mode = True
+
 class MatchBase(BaseModel):
     title: str
     date: str
@@ -34,15 +59,20 @@ class MatchBase(BaseModel):
     type_match: str
     min_age: int = 0
     max_age: int = 100
+    is_team_match: bool = False
 
 class MatchCreate(MatchBase):
-    pass
+    teammate_emails: List[EmailStr] = []
+    my_team_id: Optional[int] = None # For Team Match
 
 class MatchResponse(MatchBase):
     id: int
     organizer_id: int
     organizer_name: Optional[str] = None
     participants: List[UserResponse] = []
+    
+    team_a: Optional[TeamResponse] = None
+    team_b: Optional[TeamResponse] = None
 
     class Config:
         orm_mode = True

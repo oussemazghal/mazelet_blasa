@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Table, Float
+from sqlalchemy import Column, Integer, String, ForeignKey, Table, Float, Boolean
 from sqlalchemy.orm import relationship
 from .database import Base
 
@@ -24,6 +24,27 @@ class User(Base):
     matches = relationship("Match", back_populates="organizer")
     joined_matches = relationship("Match", secondary=match_participants, back_populates="participants")
 
+class Team(Base):
+    __tablename__ = "teams"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, index=True)
+    captain_id = Column(Integer, ForeignKey("users.id"))
+
+    captain = relationship("User", backref="owned_teams")
+    members = relationship("TeamMember", back_populates="team", cascade="all, delete-orphan")
+
+class TeamMember(Base):
+    __tablename__ = "team_members"
+
+    id = Column(Integer, primary_key=True, index=True)
+    team_id = Column(Integer, ForeignKey("teams.id"))
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=True) # Optional if they have an account
+    name = Column(String) # For non-app users (or cache of user name)
+
+    team = relationship("Team", back_populates="members")
+    user = relationship("User")
+
 class Match(Base):
     __tablename__ = "matches"
 
@@ -47,6 +68,14 @@ class Match(Base):
     
     participants = relationship("User", secondary=match_participants, back_populates="joined_matches")
 
+    # Team Match Fields
+    is_team_match = Column(Boolean, default=False)
+    team_a_id = Column(Integer, ForeignKey("teams.id"), nullable=True)
+    team_b_id = Column(Integer, ForeignKey("teams.id"), nullable=True)
+
+    team_a = relationship("Team", foreign_keys=[team_a_id])
+    team_b = relationship("Team", foreign_keys=[team_b_id])
+
 class Feedback(Base):
     __tablename__ = "feedbacks"
 
@@ -58,8 +87,5 @@ class Feedback(Base):
     # Optional: Link to user if logged in
     user_id = Column(Integer, ForeignKey("users.id"), nullable=True)
     user = relationship("User")
-    
-    # Optional: Link to specific match
-    match_id = Column(Integer, ForeignKey("matches.id"), nullable=True)
-    match = relationship("Match")
+
 
