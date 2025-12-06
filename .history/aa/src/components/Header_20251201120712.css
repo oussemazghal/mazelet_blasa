@@ -1,0 +1,42 @@
+.header {
+  width: 100%;
+  /* occupe toute la largeur */
+  height: 80px;
+  /* hauteur standard */
+  background-color: #f8f8f8;
+  /* fond clair */
+  display: flex;
+  /* aligner les boutons */
+  align-items: center;
+  /* centrer verticalement */
+  padding: 0 20px;
+  /* espace à gauche/droite */
+  gap: 15px;
+  /* espace entre les boutons */
+  position: fixed;
+  /* reste en haut même au scroll */
+  top: 0;
+  /* position haute */
+  left: 0;
+  z-index: 1000;
+  /* reste au-dessus des autres éléments */
+  border-bottom: 1px solid #ddd;
+  /* fine ligne comme les sites pro */
+}
+
+/* Style simple des boutons */
+.header button {
+  background-color: transparent;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+
+}
+
+/* Effet au survol (léger) */
+.header button:hover {
+  background-color: #eaeaea;
+  border-radius: 6px;
+}
