@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./Aboutus.css";
+import "./aboutus.css";
 import { useToast } from "../context/ToastContext";
 
 export default function Aboutus() {
