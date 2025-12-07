@@ -1,0 +1,103 @@
+/* --- SECTION PRINCIPALE (HERO) --- */
+.home {
+  width: 100vw;
+  min-height: 100vh; /* important si le header pousse */
+  background-image: url('../images/image.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: flex-start; /* placer en haut */
+  align-items: center;         /* centrer horizontalement */
+
+  padding-top: 130px; /* ajuste selon la hauteur du header */
+  position: relative;
+  z-index: 1;
+}
+
+/* --- TITRE --- */
+.home h1 {
+  font-size: 3rem;
+  color: white;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+
+/* --- CONTAINER DES 2 CARTES --- */
+.types {
+  margin-top: 20px;
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  z-index: 2; /* très important */
+}
+
+/* --- STYLE DES CARTES --- */
+.card {
+  background: rgba(255, 255, 255, 0.82);
+  padding: 20px;
+  border-radius: 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 250px;
+
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.4);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* --- IMAGES DES CARTES --- */
+.card img {
+  width: 230px;
+  border-radius: 12px;
+}
+
+/* --- BOUTONS DES CARTES --- */
+.card button {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.card button:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+
+.card button:active {
+  transform: scale(0.95);
+}
+
+/* --- RESPONSIVE POUR MOBILE --- */
+@media (max-width: 700px) {
+  .types {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .home h1 {
+    font-size: 2.4rem;
+  }
+}

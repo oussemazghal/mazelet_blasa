@@ -1,0 +1,176 @@
+/* ⭐ PROFILE PAGE - DESIGN SIMPLE ET CONFORTABLE */
+
+.page {
+    padding: 40px 20px;
+    padding-top: 100px;
+    min-height: 100vh;
+    background: #f5f7fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page h1 {
+    color: #2c3e50;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* ⭐ STEP BOX - Conteneur principal du profil */
+.step-box {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 800px;
+    border: 1px solid #e8ebef;
+}
+
+.step-box h2 {
+    color: #4A90E2;
+    font-size: 1.6rem;
+    margin: 30px 0 20px 0;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e8ebef;
+    font-weight: 600;
+}
+
+.step-box h3 {
+    color: #2c3e50;
+    font-size: 1.3rem;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.step-box p {
+    font-size: 15px;
+    color: #555;
+    margin: 12px 0;
+    line-height: 1.8;
+}
+
+.step-box p strong {
+    color: #2c3e50;
+    font-weight: 600;
+    display: inline-block;
+    min-width: 120px;
+}
+
+/* ⭐ LABELS & INPUTS */
+.step-box label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 14px;
+}
+
+.step-box input,
+.step-box select,
+.step-box textarea {
+    padding: 12px 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.2s;
+    font-family: inherit;
+    background: white;
+}
+
+.step-box input:focus,
+.step-box select:focus,
+.step-box textarea:focus {
+    outline: none;
+    border-color: #4A90E2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+/* ⭐ BUTTONS */
+.step-box button {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: white;
+}
+
+.step-box button:hover {
+    opacity: 0.9;
+}
+
+.step-box button:active {
+    transform: scale(0.98);
+}
+
+/* ⭐ MATCH LIST */
+.match-list {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.match-list li {
+    background: #f8f9fa;
+    border-left: 3px solid #4A90E2;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.match-list li:hover {
+    background: #e9ecef;
+    transform: translateX(3px);
+}
+
+.match-list li strong {
+    color: #2c3e50;
+    font-size: 15px;
+}
+
+/* ⭐ PROFILE IMAGE STYLING */
+.step-box img[alt="Profile"] {
+    border: 4px solid #4A90E2 !important;
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
+}
+
+/* ⭐ HR DIVIDER */
+.step-box hr {
+    border: none;
+    height: 1px;
+    background: #e8ebef;
+    margin: 40px 0 !important;
+}
+
+/* ⭐ RESPONSIVE */
+@media (max-width: 768px) {
+    .page {
+        padding: 20px 10px;
+        padding-top: 80px;
+    }
+
+    .page h1 {
+        font-size: 1.8rem;
+    }
+
+    .step-box {
+        padding: 25px;
+    }
+
+    .step-box h2 {
+        font-size: 1.4rem;
+    }
+
+    .step-box p strong {
+        display: block;
+        margin-bottom: 5px;
+    }
+}
