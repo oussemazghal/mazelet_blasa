@@ -5,7 +5,7 @@ set -e
 DB_NAME="football"
 DB_USER="postgres"
 DB_PASS="oussema55"
-PROJECT_DIR="/home/azureuser/serviceweb"
+PROJECT_DIR="/home/azureuser/mazelet_blasa"
 BACKEND_DIR="$PROJECT_DIR/apis"
 FRONTEND_DIR="$PROJECT_DIR/aa"
 VENV_DIR="$PROJECT_DIR/venv"
