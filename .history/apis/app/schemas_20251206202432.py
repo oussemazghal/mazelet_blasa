@@ -59,7 +59,6 @@ class MatchBase(BaseModel):
     type_match: str
     min_age: int = 0
     max_age: int = 100
-    already_joined: int = 0  # Joueurs hors-app déjà inscrits
     is_team_match: bool = False
 
 class MatchCreate(MatchBase):

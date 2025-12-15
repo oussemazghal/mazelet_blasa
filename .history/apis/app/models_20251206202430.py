@@ -62,7 +62,7 @@ class Match(Base):
     organizer_phone = Column(String)
     min_age = Column(Integer, default=0)
     max_age = Column(Integer, default=100)
-    already_joined = Column(Integer, default=0)  # Joueurs hors-app déjà inscrits
+    
     
     organizer_id = Column(Integer, ForeignKey("users.id"))
     organizer = relationship("User", back_populates="matches")
