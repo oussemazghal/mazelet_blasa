@@ -4,7 +4,7 @@ set -e
 # --- Configuration ---
 DB_NAME="football"
 DB_USER="postgres"
-DB_PASS="oussema55"
+DB_PASS="replacewithyours"
 PROJECT_DIR="/home/azureuser/mazelet_blasa"
 BACKEND_DIR="$PROJECT_DIR/apis"
 FRONTEND_DIR="$PROJECT_DIR/aa"
