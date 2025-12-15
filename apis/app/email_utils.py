@@ -3,11 +3,16 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import os
 
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
 # Configuration
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
-SENDER_EMAIL = "oussemainstagram@gmail.com"
-SENDER_PASSWORD = "txja efml ceyt ggqy"
+SENDER_EMAIL = os.getenv("SENDER_EMAIL")
+SENDER_PASSWORD = os.getenv("SENDER_PASSWORD")
 
 def send_match_reminder(to_email: str, player_name: str, match_title: str, time: str, city: str, stadium: str):
     """
